@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ReservEntity;
+import com.example.demo.sections.TrainingList;
 import com.example.demo.service.IReservingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,6 @@ public class TimetableController {
     @Autowired
     private IReservingService reservingService;
 
-
-    //
     @RequestMapping(
             method = RequestMethod.POST,
             path = "/time/reserved",
@@ -44,5 +43,10 @@ public class TimetableController {
         reserv.setDate(date);
 
         return reservingService.add(reserv);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/trainings", produces = "application/json")
+    public TrainingList[] getTrainingsList() {
+        return TrainingList.values();
     }
 }

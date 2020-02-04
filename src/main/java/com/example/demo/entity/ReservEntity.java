@@ -1,9 +1,25 @@
 package com.example.demo.entity;
 
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Entity
+@Table(name = "reserv")
 public class ReservEntity {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
+
+    @Column(name = "category")
     private String category;
+
+    @Column(name = "service")
     private String service;
+
+    @Column(name = "date")
     private Long date;
 
     public Long getId() {

@@ -20,4 +20,9 @@ public class ReservingService implements IReservingService {
     public ReservEntity getAllReserved() {
         return null;
     }
+
+    @Override
+    public ReservEntity get(Long id) {
+        return reservRepository.findById(id).orElse(null);
+    }
 }

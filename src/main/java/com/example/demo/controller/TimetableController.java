@@ -40,6 +40,11 @@ public class TimetableController {
         return reservingService.add(reserv);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/reserved/{id}", produces = "application/json")
+    public ReservEntity get(@PathVariable(name = "id") Long id) {
+        return reservingService.get(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/categories/trainings", produces = "application/json")
     public TrainingList[] getTrainingsList() {
         return TrainingList.values();

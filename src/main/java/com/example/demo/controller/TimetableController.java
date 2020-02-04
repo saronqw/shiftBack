@@ -6,6 +6,9 @@ import com.example.demo.service.IReservingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 @RestController
 public class TimetableController {
 
@@ -36,33 +39,7 @@ public class TimetableController {
                      @RequestParam(name = "category") String category,
                      @RequestParam(name = "service") String service,
                      @RequestParam(name = "date") Long date) {
-        ReservEntity reserv = new ReservEntity(id, category, service, date);
+        ReservEntity reserv = new ReservEntity(id, category, service, new Date(date));
         return reservingService.add(reserv);
     }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/trainings", produces = "application/json")
-    public TrainingList[] getTrainingsList() {
-        return TrainingList.values();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/sports", produces = "application/json")
-    public SportList[] getSportList() {
-        return SportList.values();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/spa", produces = "application/json")
-    public SPAList[] getSPAList() {
-        return SPAList.values();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/pool", produces = "application/json")
-    public PoolList[] getPoolList() {
-        return PoolList.values();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/bar", produces = "application/json")
-    public BarList[] getBarList() {
-        return BarList.values();
-    }
-
 }

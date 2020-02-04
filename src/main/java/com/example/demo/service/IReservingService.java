@@ -4,5 +4,5 @@ import com.example.demo.entity.ReservEntity;
 
 public interface IReservingService {
     ReservEntity add(ReservEntity reserv);
-    ReservEntity getAllReserved();
+    ReservEntity getAllReserved(); // Надо всё или по конкретным секциям?
 }

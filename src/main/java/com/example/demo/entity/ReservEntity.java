@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
+import java.util.Date;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -20,12 +22,12 @@ public class ReservEntity {
     private String service;
 
     @Column(name = "date")
-    private Long date;
+    private Date date;
 
     public ReservEntity() {}
 
     public ReservEntity(Long id, String category,
-                        String service, Long date) {
+                        String service, Date date) {
         this.id = id;
         this.category = category;
         this.service = service;
@@ -56,11 +58,11 @@ public class ReservEntity {
         this.service = service;
     }
 
-    public Long getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Long date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

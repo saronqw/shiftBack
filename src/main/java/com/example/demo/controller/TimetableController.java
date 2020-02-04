@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ReservEntity;
+import com.example.demo.sections.SportList;
 import com.example.demo.sections.TrainingList;
 import com.example.demo.service.IReservingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +50,10 @@ public class TimetableController {
     public TrainingList[] getTrainingsList() {
         return TrainingList.values();
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/sports", produces = "application/json")
+    public SportList[] getSportList() {
+        return SportList.values();
+    }
+
 }

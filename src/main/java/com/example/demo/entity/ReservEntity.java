@@ -22,6 +22,16 @@ public class ReservEntity {
     @Column(name = "date")
     private Long date;
 
+    public ReservEntity() {}
+
+    public ReservEntity(Long id, String category,
+                        String service, Long date) {
+        this.id = id;
+        this.category = category;
+        this.service = service;
+        this.date = date;
+    }
+
     public Long getId() {
         return id;
     }

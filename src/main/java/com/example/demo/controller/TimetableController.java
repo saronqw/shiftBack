@@ -14,7 +14,7 @@ public class TimetableController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            path = "/time/reserved",
+            path = "/time/pastreserved",
             consumes = "application/x-www-form-urlencoded",
             produces = "application/json"
     )
@@ -27,7 +27,7 @@ public class TimetableController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            path = "/time/reserving",
+            path = "/time/add",
             consumes = "application/x-www-form-urlencoded",
             produces = "application/json"
     )
@@ -36,12 +36,7 @@ public class TimetableController {
                      @RequestParam(name = "category") String category,
                      @RequestParam(name = "service") String service,
                      @RequestParam(name = "date") Long date) {
-        ReservEntity reserv = new ReservEntity();
-        reserv.setId(id);
-        reserv.setCategory(category);
-        reserv.setService(service);
-        reserv.setDate(date);
-
+        ReservEntity reserv = new ReservEntity(id, category, service, date);
         return reservingService.add(reserv);
     }
 

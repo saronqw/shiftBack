@@ -13,7 +13,7 @@ public class ReservingService implements IReservingService {
 
     @Override
     public ReservEntity add(ReservEntity reserv) {
-        return reservRepository.add(reserv);
+        return reservRepository.save(reserv);
     }
 
     @Override

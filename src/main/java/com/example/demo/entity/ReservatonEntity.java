@@ -27,16 +27,6 @@ public class ReservatonEntity {
     @Column(name = "student_document")
     private Long studentDocument;
 
-    public ReservatonEntity() {}
-
-    public ReservatonEntity(String category,
-                            String service, Date date, Long studentDocument) {
-        this.category = category;
-        this.service = service;
-        this.date = date;
-        this.studentDocument = studentDocument;
-    }
-
     public Long getId() {
         return id;
     }

@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.ReservatonEntity;
-import com.example.demo.repository.IReservRepository;
+import com.example.demo.repository.IReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,25 +11,20 @@ import java.util.List;
 public class ReservingService implements IReservingService {
 
     @Autowired
-    private IReservRepository reservRepository;
+    private IReservationRepository reservationRepository;
 
     @Override
-    public ReservatonEntity add(ReservatonEntity reserv) {
-        return reservRepository.save(reserv);
-    }
-
-    @Override
-    public ReservatonEntity getAllReserved() {
-        return null;
+    public ReservatonEntity add(ReservatonEntity reservatonEntity) {
+        return reservationRepository.save(reservatonEntity);
     }
 
     @Override
     public ReservatonEntity get(Long id) {
-        return reservRepository.findById(id).orElse(null);
+        return reservationRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<ReservatonEntity> getByService(String service) {
-        return reservRepository.findByService(service);
+        return reservationRepository.findByService(service);
     }
 }

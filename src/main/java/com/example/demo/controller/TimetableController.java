@@ -16,19 +16,6 @@ public class TimetableController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            path = "/time/pastreserved",
-            consumes = "application/x-www-form-urlencoded",
-            produces = "application/json"
-    )
-    public int getBusyTime(@RequestParam(name = "category") String category,
-                           @RequestParam(name = "service") String service,
-                           @RequestParam(name = "date") Long date) {
-        //return busService.add(bus);
-        return 0;
-    }
-
-    @RequestMapping(
-            method = RequestMethod.POST,
             path = "/time/add",
             consumes = "application/x-www-form-urlencoded",
             produces = "application/json"
@@ -37,10 +24,14 @@ public class TimetableController {
     ReservatonEntity add(@RequestParam(name = "category") String category,
                          @RequestParam(name = "service") String service,
                          @RequestParam(name = "date") Long date,
-                            @RequestParam(name = "student_document") Long studentDocument) {
-        ReservatonEntity reserv = new ReservatonEntity(category, service,
-                                                    new Date(date), studentDocument);
-        return reservingService.add(reserv);
+                         @RequestParam(name = "time") Long time,
+                         @RequestParam(name = "student_document") Long studentDocument) {
+        ReservatonEntity reservatonEntity = new ReservatonEntity();
+        reservatonEntity.setStudentDocument(studentDocument);
+        reservatonEntity.setCategory(category);
+        reservatonEntity.setService(service);
+        reservatonEntity.setDate(new Date(date));
+        return reservingService.add(reservatonEntity);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/services/{service}", produces = "application/json")

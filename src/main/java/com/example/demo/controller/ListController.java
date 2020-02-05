@@ -14,18 +14,18 @@ public class ListController {
 
     // Ниже расположены три функции (надо замменить на двуязычные списки, пример в самом низу)
     @RequestMapping(method = RequestMethod.GET, path = "/gym", produces = "application/json")
-    public SportList[] getSportList() {
-        return SportList.values();
+    public List<Service> getSportList() {
+        return new Services().getSportList();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/spa", produces = "application/json")
-    public SPAList[] getSPAList() {
-        return SPAList.values();
+    public List<Service> getSPAList() {
+        return new Services().getSPAList();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/pool", produces = "application/json")
-    public PoolList[] getPoolList() {
-        return PoolList.values();
+    public List<Service> getPoolList() {
+        return new Services().getPoolList();
     }
 
     /**

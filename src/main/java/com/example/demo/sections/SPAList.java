@@ -1,5 +1,5 @@
 package com.example.demo.sections;
 
 public enum SPAList {
-    Massage, Sauna, Acupuncture, Manicure, Pedicure, BeautyParlor
+    Massage, Sauna, Acupuncture, Manicure, Pedicure
 }

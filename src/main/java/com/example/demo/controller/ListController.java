@@ -13,22 +13,22 @@ public class ListController {
         return TrainingList.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/sports", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/gym", produces = "application/json")
     public SportList[] getSportList() {
         return SportList.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/spa", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/spa", produces = "application/json")
     public SPAList[] getSPAList() {
         return SPAList.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/pool", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/pool", produces = "application/json")
     public PoolList[] getPoolList() {
         return PoolList.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/bar", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/bar", produces = "application/json")
     public BarList[] getBarList() {
         return BarList.values();
     }

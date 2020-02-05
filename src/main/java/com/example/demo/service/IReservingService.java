@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.ReservEntity;
+import com.example.demo.entity.ReservatonEntity;
+
+import java.util.List;
 
 public interface IReservingService {
-    ReservEntity add(ReservEntity reserv);
-    ReservEntity getAllReserved();
-    ReservEntity get(Long id);
+    ReservatonEntity add(ReservatonEntity reserv);
+    ReservatonEntity getAllReserved();
+    ReservatonEntity get(Long id);
+    List<ReservatonEntity> getByService(String service);
 }

@@ -8,7 +8,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "reserv")
-public class ReservEntity {
+public class ReservatonEntity {
 
     @Id
     @Column(name = "id")
@@ -24,14 +24,17 @@ public class ReservEntity {
     @Column(name = "date")
     private Date date;
 
-    public ReservEntity() {}
+    @Column(name = "student_document")
+    private Long studentDocument;
 
-    public ReservEntity(Long id, String category,
-                        String service, Date date) {
-        this.id = id;
+    public ReservatonEntity() {}
+
+    public ReservatonEntity(String category,
+                            String service, Date date, Long studentDocument) {
         this.category = category;
         this.service = service;
         this.date = date;
+        this.studentDocument = studentDocument;
     }
 
     public Long getId() {
@@ -65,4 +68,8 @@ public class ReservEntity {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public Long getStudentDocument() { return studentDocument; }
+
+    public void setStudentDocument(Long studentDocument) { this.studentDocument = studentDocument; }
 }

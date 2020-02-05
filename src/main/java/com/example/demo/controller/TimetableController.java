@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.ReservEntity;
-import com.example.demo.sections.*;
+import com.example.demo.entity.ReservatonEntity;
 import com.example.demo.service.IReservingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class TimetableController {
@@ -35,16 +34,22 @@ public class TimetableController {
             produces = "application/json"
     )
     public @ResponseBody
-    ReservEntity add(@RequestParam(name = "id") Long id,
-                     @RequestParam(name = "category") String category,
-                     @RequestParam(name = "service") String service,
-                     @RequestParam(name = "date") Long date) {
-        ReservEntity reserv = new ReservEntity(id, category, service, new Date(date));
+    ReservatonEntity add(@RequestParam(name = "category") String category,
+                         @RequestParam(name = "service") String service,
+                         @RequestParam(name = "date") Long date,
+                            @RequestParam(name = "student_document") Long studentDocument) {
+        ReservatonEntity reserv = new ReservatonEntity(category, service,
+                                                    new Date(date), studentDocument);
         return reservingService.add(reserv);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/services/{service}", produces = "application/json")
+    public List<ReservatonEntity> get(@PathVariable(name = "service") String service) {
+        return reservingService.getByService(service);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/reserved/{id}", produces = "application/json")
-    public ReservEntity get(@PathVariable(name = "id") Long id) {
+    public ReservatonEntity getByID(@PathVariable(name = "id") Long id) {
         return reservingService.get(id);
     }
 }

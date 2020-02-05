@@ -5,6 +5,10 @@ import java.sql.Timestamp;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+/**
+ * date - Дата в формате 1523232000000
+ * time - Время в формате 12:00
+ */
 @Entity
 @Table(name = "date_time")
 public class DateTimeEntity {

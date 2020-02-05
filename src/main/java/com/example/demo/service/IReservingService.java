@@ -1,14 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.ReservatonEntity;
+import com.example.demo.entity.ReservationEntity;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public interface IReservingService {
-    ReservatonEntity add(ReservatonEntity reservatonEntity);
-    ReservatonEntity get(Long id);
-    List<ReservatonEntity> getByService(String service);
+    ReservationEntity add(ReservationEntity reservationEntity);
+    ReservationEntity get(Long id);
+    List<ReservationEntity> getByService(String service);
     List<String> getByDayAndService(String service, Long time);
 }

@@ -8,9 +8,14 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+/**
+ * service - название сервиса
+ * dateTime - объект времени
+ * studentDocument - номер студака
+ */
 @Entity
 @Table(name = "reserv")
-public class ReservatonEntity {
+public class ReservationEntity {
 
     @Id
     @Column(name = "id")

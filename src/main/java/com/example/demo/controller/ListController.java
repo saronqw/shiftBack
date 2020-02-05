@@ -12,11 +12,7 @@ import java.util.List;
 @RestController
 public class ListController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/categories/trainings", produces = "application/json")
-    public TrainingList[] getTrainingsList() {
-        return TrainingList.values();
-    }
-
+    // Ниже расположены три функции (надо замменить на двуязычные списки, пример в самом низу)
     @RequestMapping(method = RequestMethod.GET, path = "/gym", produces = "application/json")
     public SportList[] getSportList() {
         return SportList.values();
@@ -32,11 +28,10 @@ public class ListController {
         return PoolList.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/bar2", produces = "application/json")
-    public BarList[] getBarList2() {
-        return BarList.values();
-    }
-
+    /**
+     * Возвращает список сервисов бара аж в 2-ух языках
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/bar", produces = "application/json")
     public List<Service> getBarList() {
         return new Services().getBarList();

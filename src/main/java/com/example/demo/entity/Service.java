@@ -1,5 +1,8 @@
 package com.example.demo.entity;
 
+/**
+ * Нужен, чтобы передать объект в двух языках
+ */
 public class Service {
     private String eng;
     private String rus;

@@ -3,6 +3,9 @@ package com.example.demo.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Добавляет списки
+ */
 public class Services {
     private List<Service> services;
 
@@ -10,6 +13,10 @@ public class Services {
         services = new ArrayList<>();
     }
 
+    /**
+     * Списки сервисов бара
+     * @return
+     */
     public List<Service> getBarList() {
         services.add(new Service("Hookah", "Кальян"));
         services.add(new Service("XBox", ""));

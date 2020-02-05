@@ -44,7 +44,7 @@ public class TimetableController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/services/{service}/{date}", produces = "application/json")
-    public List<ReservatonEntity> getByDateAndService(@PathVariable(name = "service") String service,
+    public List<String> getByDateAndService(@PathVariable(name = "service") String service,
                                                       @PathVariable(name = "date") Long date) {
         return reservingService.getByDayAndService(service, date);
     }

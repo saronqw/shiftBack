@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,8 +32,16 @@ public class ReservingService implements IReservingService {
     }
 
     @Override
-    public List<ReservatonEntity> getByDayAndService(String service, Long time) {
-        return reservationRepository.findByServiceAndDateTime_Date(service, time);
+    public List<String> getByDayAndService(String service, Long date) {
+        List<String> times = new ArrayList<>();
+
+        for (ReservatonEntity rep: reservationRepository
+                .findByServiceAndDateTime_Date(service, date)) {
+            times.add(rep.getDateTime().getTime());
+        }
+        times.sort(String::compareToIgnoreCase);
+
+        return times;
     }
 
 

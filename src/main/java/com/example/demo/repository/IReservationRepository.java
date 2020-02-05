@@ -9,8 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface IReservationRepository extends CrudRepository<ReservatonEntity, Long> {
-//    ReservEntity add(ReservEntity reserv);
-//    ReservEntity getAllReserved();
      List<ReservatonEntity> findByService(String service);
      List<ReservatonEntity> findByServiceAndDateTime_Date(String service, Long date);
 }

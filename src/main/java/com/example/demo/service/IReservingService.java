@@ -10,5 +10,5 @@ public interface IReservingService {
     ReservatonEntity add(ReservatonEntity reservatonEntity);
     ReservatonEntity get(Long id);
     List<ReservatonEntity> getByService(String service);
-    List<ReservatonEntity> getByDayAndService(String service, Long time);
+    List<String> getByDayAndService(String service, Long time);
 }

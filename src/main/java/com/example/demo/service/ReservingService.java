@@ -5,6 +5,8 @@ import com.example.demo.repository.IReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,5 +28,10 @@ public class ReservingService implements IReservingService {
     @Override
     public List<ReservatonEntity> getByService(String service) {
         return reservationRepository.findByService(service);
+    }
+
+    @Override
+    public ReservatonEntity getByDate(String service, Timestamp date, String hour){
+        return reservationRepository.findByServiceAndDateAndHour(service, date, hour);
     }
 }

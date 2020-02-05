@@ -1,9 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Service;
+import com.example.demo.entity.Services;
 import com.example.demo.sections.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class ListController {
@@ -28,9 +32,13 @@ public class ListController {
         return PoolList.values();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/bar", produces = "application/json")
-    public BarList[] getBarList() {
+    @RequestMapping(method = RequestMethod.GET, path = "/bar2", produces = "application/json")
+    public BarList[] getBarList2() {
         return BarList.values();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/bar", produces = "application/json")
+    public List<Service> getBarList() {
+        return new Services().getBarList();
+    }
 }

@@ -29,4 +29,11 @@ public class ReservingService implements IReservingService {
     public List<ReservatonEntity> getByService(String service) {
         return reservationRepository.findByService(service);
     }
+
+    @Override
+    public List<ReservatonEntity> getByDayAndService(String service, Long time) {
+        return reservationRepository.findByServiceAndDateTime_Date(service, time);
+    }
+
+
 }

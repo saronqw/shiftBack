@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,14 +20,8 @@ public class ReservatonEntity {
     @Column(name = "service")
     private String service;
 
-    @Column(name = "date")
-    private Timestamp date;
-
-    @Column(name = "hour")
-    private String hour;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private DateTimeEntity dateTime;
+    @OneToOne(cascade = CascadeType.ALL)
+    private DateTimeEntity dateTime;
 
     @Column(name = "student_document")
     private Long studentDocument;
@@ -47,31 +42,15 @@ public class ReservatonEntity {
         this.service = service;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
-    }
-
     public Long getStudentDocument() { return studentDocument; }
 
     public void setStudentDocument(Long studentDocument) { this.studentDocument = studentDocument; }
 
-    public String getHour() {
-        return hour;
+    public DateTimeEntity getDateTime() {
+        return dateTime;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setDateTime(DateTimeEntity dateTime) {
+        this.dateTime = dateTime;
     }
-
-//    public DateTimeEntity getDateTime() {
-//        return dateTime;
-//    }
-//
-//    public void setDateTime(DateTimeEntity dateTime) {
-//        this.dateTime = dateTime;
-//    }
 }

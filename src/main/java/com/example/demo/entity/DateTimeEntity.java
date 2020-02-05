@@ -1,24 +1,38 @@
 package com.example.demo.entity;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-public class DateTimeEntity {
-    private Timestamp time;
-    private String hour;
+import static javax.persistence.GenerationType.IDENTITY;
 
-    public Timestamp getTime() {
+@Entity
+@Table(name = "date_time")
+public class DateTimeEntity {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = IDENTITY)
+    private long id;
+
+    @Column(name = "date")
+    private Long date;
+
+    @Column(name = "time")
+    private String time;
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(String time) {
         this.time = time;
-    }
-
-    public String getHour() {
-        return hour;
-    }
-
-    public void setHour(String hour) {
-        this.hour = hour;
     }
 }

@@ -29,9 +29,4 @@ public class ReservingService implements IReservingService {
     public List<ReservatonEntity> getByService(String service) {
         return reservationRepository.findByService(service);
     }
-
-    @Override
-    public ReservatonEntity getByDate(String service, Timestamp date, String hour){
-        return reservationRepository.findByServiceAndDateAndHour(service, date, hour);
-    }
 }

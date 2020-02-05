@@ -12,6 +12,4 @@ public interface IReservationRepository extends CrudRepository<ReservatonEntity,
 //    ReservEntity add(ReservEntity reserv);
 //    ReservEntity getAllReserved();
      List<ReservatonEntity> findByService(String service);
-     ReservatonEntity findByServiceAndDate(String service, Date date);
-     ReservatonEntity findByServiceAndDateAndHour(String service, Timestamp date, String hour);
 }

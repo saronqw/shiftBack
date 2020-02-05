@@ -10,5 +10,4 @@ public interface IReservingService {
     ReservatonEntity add(ReservatonEntity reservatonEntity);
     ReservatonEntity get(Long id);
     List<ReservatonEntity> getByService(String service);
-    ReservatonEntity getByDate(String service, Timestamp date, String hour);
 }

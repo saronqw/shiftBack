@@ -29,8 +29,6 @@ public class TimetableController {
         ReservatonEntity reservatonEntity = new ReservatonEntity();
         reservatonEntity.setStudentDocument(studentDocument);
         reservatonEntity.setService(service);
-        reservatonEntity.setDate(new Timestamp(date));
-        reservatonEntity.setHour(hour);
         return reservingService.add(reservatonEntity);
     }
 
@@ -45,12 +43,12 @@ public class TimetableController {
         return reservingService.getByService(service);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/services/{service}/{date}/{hour}", produces = "application/json")
-    public ReservatonEntity getByDate(@PathVariable(name = "service") String service,
-                                @PathVariable(name = "date") Long date,
-                                @PathVariable(name = "hour") String hour) {
-        return reservingService.getByDate(service, new Timestamp(date), hour);
-    }
+//    @RequestMapping(method = RequestMethod.GET, path = "/services/{service}/{date}/{hour}", produces = "application/json")
+//    public ReservatonEntity getByDate(@PathVariable(name = "service") String service,
+//                                @PathVariable(name = "date") Long date,
+//                                @PathVariable(name = "hour") String hour) {
+//        return reservingService.getByDate(service, new Timestamp(date), hour);
+//    }
 
     @RequestMapping(method = RequestMethod.GET, path = "/date/{date}", produces = "application/json")
     public Timestamp getDateAtRightFormat(@PathVariable(name = "date") Long date) {

@@ -10,22 +10,22 @@ import java.util.List;
 @RestController
 public class ListController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/gym", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/gym", produces = "application/json")
     public List<Service> getSportList() {
         return new Services().getSportList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/spa", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/spa", produces = "application/json")
     public List<Service> getSPAList() {
         return new Services().getSPAList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/pool", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/pool", produces = "application/json")
     public List<Service> getPoolList() {
         return new Services().getPoolList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/bar", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/bar", produces = "application/json")
     public List<Service> getBarList() {
         return new Services().getBarList();
     }

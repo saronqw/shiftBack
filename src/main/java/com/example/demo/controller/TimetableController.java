@@ -50,7 +50,7 @@ public class TimetableController {
             || addReservationRequest.getDateTime().getTime() == null
             || addReservationRequest.getStudentDocument() == null
             || addReservationRequest.getService() == null)
-            throw new NullFieldsException();
+            throw new NullFieldsException(addReservationRequest);
 
         Boolean isExisted = iReservationRepository.existsByDateTime_DateAndDateTime_TimeAndService(addReservationRequest.getDateTime().getDate(),
                 addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());

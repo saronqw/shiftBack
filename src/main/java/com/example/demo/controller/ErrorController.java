@@ -48,6 +48,7 @@ public class ErrorController {
         responseStatus.setCode(ResponseCode.ERROR.getCode());
         responseStatus.setErrorMessage("Имеются нулевые поля");
         resultResponse.setStatus(responseStatus);
+        resultResponse.setData(e.getObject());
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
 }

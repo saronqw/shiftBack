@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ReservationEntity;
+import com.example.demo.exception.RecordExistException;
 import com.example.demo.model.api.request.AddReservationRequest;
 import com.example.demo.repository.IReservationRepository;
 import com.example.demo.service.IReservingService;
@@ -79,7 +80,7 @@ public class TimetableController {
         Boolean isExisted = iReservationRepository.existsByDateTime_DateAndDateTime_TimeAndService(addReservationRequest.getDateTime().getDate(),
                 addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());
 
-        if (isExisted) throw new Exception();
+        if (isExisted) throw new RecordExistException(addReservationRequest);
 
         return ResponseEntity.status(HttpStatus.OK).body(reservingService.addv2(addReservationRequest));
     }

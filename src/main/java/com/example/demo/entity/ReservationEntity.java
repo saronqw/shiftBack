@@ -14,6 +14,14 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "reserv")
 public class ReservationEntity {
 
+    public ReservationEntity() { }
+
+    public ReservationEntity(String service, DateTimeEntity dateTime, Long studentDocument) {
+        this.service = service;
+        this.dateTime = dateTime;
+        this.studentDocument = studentDocument;
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = IDENTITY)

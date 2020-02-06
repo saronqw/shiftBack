@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IReservingService {
     ReservationEntity add(ReservationEntity reservationEntity);
-    ResultResponse addv2(AddReservationRequest addReservationRequest) throws Exception;
+    ResultResponse add_v2(AddReservationRequest addReservationRequest) throws Exception;
     ReservationEntity get(Long id);
     List<ReservationEntity> getByService(String service);
     List<String> getByDayAndService(String service, Long time);

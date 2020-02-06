@@ -39,7 +39,6 @@ public class ListController {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getSportList()));
     }
 
-
     /**
      * Метод GET запроса для спа.
      * @return Возвращает список сервисов спа.

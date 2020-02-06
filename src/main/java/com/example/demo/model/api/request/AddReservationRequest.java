@@ -13,7 +13,6 @@ public class AddReservationRequest {
 
     private Long studentDocument;
 
-
     public String getService() {
         return service;
     }

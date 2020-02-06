@@ -57,7 +57,7 @@ public class TimetableController {
 
         if (isExisted) throw new RecordExistException(addReservationRequest);
 
-        return ResponseEntity.status(HttpStatus.OK).body(reservingService.addv2(addReservationRequest));
+        return ResponseEntity.status(HttpStatus.OK).body(reservingService.add_v2(addReservationRequest));
     }
 
     /**

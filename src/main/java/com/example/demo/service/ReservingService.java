@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.DateTimeEntity;
 import com.example.demo.entity.ReservationEntity;
 import com.example.demo.model.api.ResponseCode;
 import com.example.demo.model.api.ResponseStatus;
@@ -33,14 +32,12 @@ public class ReservingService implements IReservingService {
      * @return Возвращает объект класса ResultResponse
      */
     @Override
-    public ResultResponse addv2(AddReservationRequest addReservationRequest) {
-        String service = addReservationRequest.getService();
-        DateTimeEntity dateTimeEntity = addReservationRequest.getDateTime();
-        Long studentDocument = addReservationRequest.getStudentDocument();
-        ReservationEntity reservationEntity = new ReservationEntity();
-        reservationEntity.setService(service);
-        reservationEntity.setDateTime(dateTimeEntity);
-        reservationEntity.setStudentDocument(studentDocument);
+    public ResultResponse add_v2(AddReservationRequest addReservationRequest) {
+        ReservationEntity reservationEntity = new ReservationEntity(
+                addReservationRequest.getService(),
+                addReservationRequest.getDateTime(),
+                addReservationRequest.getStudentDocument()
+        );
         reservationRepository.save(reservationEntity);
 
         AddReservationResponse addReservationResponse = createAddReservationResponse(reservationEntity);
@@ -54,7 +51,7 @@ public class ReservingService implements IReservingService {
 
     /**
      * Метод создания объекта класса AddReservationResponse,
-     * используемый в {@link #addv2(AddReservationRequest)}
+     * используемый в {@link #add_v2(AddReservationRequest)}
      * @param reservationEntity
      * @return Возвращает объект класса AddReservationResponse.
      */

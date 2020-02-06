@@ -26,32 +26,6 @@ public class TimetableController {
     private IReservationRepository iReservationRepository;
 
     /**
-     * Бесполезна, фронту не нужна.
-     * Скорее всего, надо удалить.
-     * @param service Сервис записи.
-     * @param date Дата записи.
-     * @param hour Час записи.
-     * @param studentDocument Студак.
-     * @return Добавляет запись на сервис в виде json объекта.
-     */
-    @RequestMapping(
-            method = RequestMethod.POST,
-            path = "time/add",
-            consumes = "application/json",
-            produces = "application/json"
-    )
-    public @ResponseBody
-    ReservationEntity add(@RequestParam(name = "service") String service,
-                          @RequestParam(name = "date") Long date,
-                          @RequestParam(name = "hour") String hour,
-                          @RequestParam(name = "student_document") Long studentDocument) {
-        ReservationEntity reservationEntity = new ReservationEntity();
-        reservationEntity.setStudentDocument(studentDocument);
-        reservationEntity.setService(service);
-        return reservingService.add(reservationEntity);
-    }
-
-    /**
      * Добавляет запись на сервис (не используется?)
      * @param reservationEntity Запись (сущность).
      * @return Добавляет запись на сервис в виде json объекта.

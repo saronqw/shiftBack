@@ -2,10 +2,6 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Set;
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**

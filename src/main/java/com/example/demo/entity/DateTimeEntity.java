@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

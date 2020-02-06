@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.RecordExistException;
 import com.example.demo.model.api.ResponseCode;
 import com.example.demo.model.api.ResponseStatus;
 import com.example.demo.model.api.ResultResponse;
@@ -29,8 +30,14 @@ public class ErrorController {
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
 
-    /*@ExceptionHandler(value = ProductNotfoundException.class)
-    public ResponseEntity<Object> exception(ProductNotfoundException exception) {
-        return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
-    }*/
+    @ExceptionHandler(value = RecordExistException.class)
+    public ResponseEntity<Object> handleException(RecordExistException e) {
+        ResultResponse resultResponse = new ResultResponse();
+        ResponseStatus responseStatus = new ResponseStatus();
+        responseStatus.setCode(ResponseCode.ERROR.getCode());
+        responseStatus.setErrorMessage("Данное время уже занято");
+        resultResponse.setStatus(responseStatus);
+        resultResponse.setData(e.getAddReservationRequest());
+        return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
+    }
 }

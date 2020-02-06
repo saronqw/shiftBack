@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.NullFieldsException;
 import com.example.demo.exception.RecordExistException;
 import com.example.demo.model.api.ResponseCode;
 import com.example.demo.model.api.ResponseStatus;
@@ -16,16 +17,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ErrorController {
     /**
      * Метод обработчика ошибок.
-     * @param e Исключение.
      * @return Возвращает сообщение об ошибке.
      */
-    @ExceptionHandler
-    public ResponseEntity<ResultResponse> handleException(Exception e) {
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<ResultResponse> handleException() {
 
         ResultResponse resultResponse = new ResultResponse();
         ResponseStatus responseStatus = new ResponseStatus();
         responseStatus.setCode(ResponseCode.ERROR.getCode());
-        responseStatus.setErrorMessage("Заданы неверные параметры");
+        responseStatus.setErrorMessage("Пикачу, я выбираю тебя!");
         resultResponse.setStatus(responseStatus);
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
@@ -38,6 +38,16 @@ public class ErrorController {
         responseStatus.setErrorMessage("Данное время уже занято");
         resultResponse.setStatus(responseStatus);
         resultResponse.setData(e.getAddReservationRequest());
+        return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
+    }
+
+    @ExceptionHandler(value = NullFieldsException.class)
+    public ResponseEntity<Object> handleException(NullFieldsException e) {
+        ResultResponse resultResponse = new ResultResponse();
+        ResponseStatus responseStatus = new ResponseStatus();
+        responseStatus.setCode(ResponseCode.ERROR.getCode());
+        responseStatus.setErrorMessage("Имеются нулевые поля");
+        resultResponse.setStatus(responseStatus);
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
 }

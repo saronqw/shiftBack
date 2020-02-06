@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ReservationEntity;
+import com.example.demo.exception.NullFieldsException;
 import com.example.demo.exception.RecordExistException;
 import com.example.demo.model.api.request.AddReservationRequest;
 import com.example.demo.repository.IReservationRepository;
@@ -68,14 +69,14 @@ public class TimetableController {
      * @throws Exception При отсутствии одного из параметров записи или при повторении записи отображается исключение.
      */
     @PostMapping(
-            value = "addv2", consumes = "application/json", produces = "application/json")
+            value = "add_v2", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
 
         if (addReservationRequest.getDateTime().getDate() == null
             || addReservationRequest.getDateTime().getTime() == null
             || addReservationRequest.getStudentDocument() == null
             || addReservationRequest.getService() == null)
-            throw new Exception();
+            throw new NullFieldsException();
 
         Boolean isExisted = iReservationRepository.existsByDateTime_DateAndDateTime_TimeAndService(addReservationRequest.getDateTime().getDate(),
                 addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());

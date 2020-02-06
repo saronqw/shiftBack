@@ -26,11 +26,11 @@ public class TimetableController {
     /**
      * Бесполезна, фронту не нужна.
      * Скорее всего, надо удалить.
-     * @param service
-     * @param date
-     * @param hour
-     * @param studentDocument
-     * @return
+     * @param service Сервис записи.
+     * @param date Дата записи.
+     * @param hour Час записи.
+     * @param studentDocument Студак.
+     * @return Добавляет запись на сервис в виде json объекта.
      */
     @RequestMapping(
             method = RequestMethod.POST,
@@ -51,8 +51,8 @@ public class TimetableController {
 
     /**
      * Добавляет запись на сервис (не используется?)
-     * @param reservationEntity
-     * @return
+     * @param reservationEntity Запись (сущность).
+     * @return Добавляет запись на сервис в виде json объекта.
      */
     @PostMapping(
             value = "add", consumes = "application/json", produces = "application/json")
@@ -62,7 +62,7 @@ public class TimetableController {
 
     /**
      * Метод добавления записи на сервис.
-     * @param addReservationRequest
+     * @param addReservationRequest Добавляет
      * @return Добавляет запись на сервис в виде json объекта.
      * @throws Exception При отсутствии одного из параметров записи или при повторении записи отображается исключение.
      */
@@ -86,8 +86,8 @@ public class TimetableController {
 
     /**
      * Выводит все сущности, относящиеся к конкретному сервису (скорее всего, надо удалить)
-     * @param service
-     * @return
+     * @param service Сервис записи.
+     * @return Возвращает список сущностей сервиса.
      */
     @RequestMapping(method = RequestMethod.GET, path = "services_simple/{service}", produces = "application/json")
     public List<ReservationEntity> get(@PathVariable(name = "service") String service) {
@@ -97,9 +97,9 @@ public class TimetableController {
     /**
      * Дико важная функция по заказу фронтенда.
      * Выводит список часов конкретной секции в определённый день.
-     * @param service
-     * @param date
-     * @return
+     * @param service Сервис записей.
+     * @param date Дата, в которой необходимо просмотреть время.
+     * @return Возвращает список доступных часов.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/services/{service}/{date}", produces = "application/json")
     public List<String> getByDateAndService(@PathVariable(name = "service") String service,
@@ -109,8 +109,8 @@ public class TimetableController {
 
     /**
      * Выводит по id запись. Важна только для теста
-     * @param id
-     * @return
+     * @param id Идентификатор записи.
+     * @return Возвращает запись.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/reserved/{id}", produces = "application/json")
     public ReservationEntity getByID(@PathVariable(name = "id") Long id) {

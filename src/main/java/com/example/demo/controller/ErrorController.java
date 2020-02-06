@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ErrorController {
     /**
      * Метод обработчика ошибок.
-     * @param e
+     * @param e Исключение.
      * @return Возвращает сообщение об ошибке.
      */
     @ExceptionHandler

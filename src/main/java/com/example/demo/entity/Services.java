@@ -14,8 +14,8 @@ public class Services {
     }
 
     /**
-     * Списки сервисов бара
-     * @return
+     * Списки сервисов бара.
+     * @return Возвращает список сервисов бара.
      */
     public List<Service> getBarList() {
         services.add(new Service("Hookah", "Кальян"));
@@ -29,8 +29,8 @@ public class Services {
     }
 
     /**
-     * Списки сервисов бассейна
-     * @return
+     * Списки сервисов бассейна.
+     * @return Возвращает список сервисов бассейна.
      */
     public List<Service> getPoolList() {
         services.add(new Service("Swimming Circle", "Плавательный Круг"));
@@ -43,8 +43,8 @@ public class Services {
     }
 
     /**
-     * Списки сервисов спа
-     * @return
+     * Списки сервисов спа.
+     * @return Возвращает список сервисов спа.
      */
     public List<Service> getSPAList() {
         services.add(new Service("Massage", "Массаж"));
@@ -57,8 +57,8 @@ public class Services {
     }
 
     /**
-     * Списки сервисов спортзала
-     * @return
+     * Списки сервисов спортзала.
+     * @return Возвращает список сервисов спортзала.
      */
     public List<Service> getSportList() {
         services.add(new Service("Gym", "Качалка"));

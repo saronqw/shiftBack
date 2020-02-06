@@ -7,7 +7,6 @@ import org.springframework.core.Ordered;
 
 /**
  * Класс фильтров, необходимый для CORS фильтра
- * {@link CorsFilter}
  */
 @Configuration
 public class Filters {

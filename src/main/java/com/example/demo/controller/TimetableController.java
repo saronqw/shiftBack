@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ReservationEntity;
+import com.example.demo.model.api.ResponseCode;
+import com.example.demo.model.api.ResponseStatus;
+import com.example.demo.model.api.ResultResponse;
 import com.example.demo.model.api.request.AddReservationRequest;
+import com.example.demo.repository.IReservationRepository;
 import com.example.demo.service.IReservingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +19,9 @@ public class TimetableController {
 
     @Autowired
     private IReservingService reservingService;
+
+    @Autowired
+    private IReservationRepository iReservationRepository;
 
     /**
      * Бесполезна, фронту не нужна.
@@ -57,7 +64,17 @@ public class TimetableController {
             value = "/addv2", consumes = "application/json", produces = "application/json")
     public ResponseEntity addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
 
-        if (addReservationRequest.getDateTime().getDate() == null) throw new Exception();
+        if (addReservationRequest.getDateTime().getDate() == null
+            || addReservationRequest.getDateTime().getTime() == null
+            || addReservationRequest.getStudentDocument() == null
+            || addReservationRequest.getService() == null)
+            throw new Exception();
+
+        Boolean isExisted = iReservationRepository.existsByDateTime_DateAndDateTime_TimeAndService(addReservationRequest.getDateTime().getDate(),
+                addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());
+
+        if (isExisted) throw new Exception();
+
         return ResponseEntity.status(HttpStatus.OK).body(reservingService.addv2(addReservationRequest));
     }
 

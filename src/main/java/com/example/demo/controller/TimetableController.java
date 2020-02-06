@@ -83,6 +83,12 @@ public class TimetableController {
         return reservingService.getByDayAndService(service, date);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/services_v2/{service}/{date}", produces = "application/json")
+    public ResponseEntity<?> getByDateAndService_v2(@PathVariable(name = "service") String service,
+                                            @PathVariable(name = "date") Long date) {
+        return ResponseEntity.status(HttpStatus.OK).body(reservingService.getByDayAndService_v2(service, date));
+    }
+
     /**
      * Выводит по id запись. Важна только для теста
      * @param id Идентификатор записи.

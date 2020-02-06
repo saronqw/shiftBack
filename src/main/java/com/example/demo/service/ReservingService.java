@@ -7,7 +7,10 @@ import com.example.demo.model.api.ResultResponse;
 import com.example.demo.model.api.request.AddReservationRequest;
 import com.example.demo.model.api.response.AddReservationResponse;
 import com.example.demo.repository.IReservationRepository;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,5 +93,26 @@ public class ReservingService implements IReservingService {
         times.sort(String::compareToIgnoreCase);
 
         return times;
+    }
+
+    @Override
+    public ResultResponse getByDayAndService_v2(String service, Long date) {
+        List<String> times = new ArrayList<>();
+
+        for (ReservationEntity rep: reservationRepository
+                .findByServiceAndDateTime_Date(service, date)) {
+            times.add(rep.getDateTime().getTime());
+        }
+        times.sort(String::compareToIgnoreCase);
+
+        ResultResponse resultResponse = new ResultResponse();
+        resultResponse.setData(times);
+
+        ResponseStatus responseStatus = new ResponseStatus();
+        responseStatus.setCode(ResponseCode.OK.getCode());
+        resultResponse.setStatus(responseStatus);
+
+
+        return resultResponse;
     }
 }

@@ -69,7 +69,7 @@ public class TimetableController {
      */
     @PostMapping(
             value = "addv2", consumes = "application/json", produces = "application/json")
-    public ResponseEntity addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
+    public ResponseEntity<?> addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
 
         if (addReservationRequest.getDateTime().getDate() == null
             || addReservationRequest.getDateTime().getTime() == null

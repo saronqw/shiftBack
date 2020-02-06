@@ -1,6 +1,5 @@
 package com.example.demo.exception;
 
-import com.example.demo.entity.DateTimeEntity;
 import com.example.demo.model.api.request.AddReservationRequest;
 
 public class RecordExistException extends RuntimeException {

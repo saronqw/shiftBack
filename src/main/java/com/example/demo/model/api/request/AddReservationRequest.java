@@ -2,6 +2,9 @@ package com.example.demo.model.api.request;
 
 import com.example.demo.entity.DateTimeEntity;
 
+/**
+ * Класс, возвращающий запись.
+ */
 public class AddReservationRequest {
 
     private String service;

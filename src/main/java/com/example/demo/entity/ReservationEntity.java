@@ -5,6 +5,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
+ * Сущность, содержащая информацию о брони.
  * service - название сервиса
  * dateTime - объект времени
  * studentDocument - номер студака

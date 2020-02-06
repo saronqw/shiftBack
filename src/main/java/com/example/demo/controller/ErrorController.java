@@ -8,9 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * Класс обработчика ошибок.
+ */
 @ControllerAdvice
 public class ErrorController {
-
+    /**
+     * Метод обработчика ошибок.
+     * @param e
+     * @return Возвращает сообщение об ошибке.
+     */
     @ExceptionHandler
     public ResponseEntity<ResultResponse> handleException(Exception e) {
 

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Класс-контроллер, отвечающий за бронирование сервисов.
+ */
 @RestController
 public class TimetableController {
 
@@ -47,7 +50,7 @@ public class TimetableController {
     }
 
     /**
-     * Добавляет запись на сервис
+     * Добавляет запись на сервис (не используется?)
      * @param reservationEntity
      * @return
      */
@@ -57,6 +60,12 @@ public class TimetableController {
         return reservingService.add(reservationEntity);
     }
 
+    /**
+     * Метод добавления записи на сервис.
+     * @param addReservationRequest
+     * @return Добавляет запись на сервис в виде json объекта.
+     * @throws Exception При отсутствии одного из параметров записи или при повторении записи отображается исключение.
+     */
     @PostMapping(
             value = "addv2", consumes = "application/json", produces = "application/json")
     public ResponseEntity addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {

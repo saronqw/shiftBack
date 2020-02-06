@@ -1,5 +1,8 @@
 package com.example.demo.model.api;
 
+/**
+ * Класс, хранящий код ошибки и сообщение ошибки.
+ */
 public class ResponseStatus {
     private String code;
     private String errorMessage;

@@ -5,6 +5,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
+ * Сущность, содержащая дату и время.
  * date - Дата в формате 1523232000000
  * time - Время в формате 12:00
  */

@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Класс фильтра CORS, добавляет заголовки к ответу,
+ * таким образом, с другого домена возможно делать запросы.
+ */
 public class CorsFilter extends OncePerRequestFilter {
 
     @Override

@@ -1,5 +1,8 @@
 package com.example.demo.model.api;
 
+/**
+ * Класс, хранящий результат операции и его статус.
+ */
 public class ResultResponse {
     private ResponseStatus status;
     private Object data;

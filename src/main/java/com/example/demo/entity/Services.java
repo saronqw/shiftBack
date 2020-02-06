@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Добавляет списки
+ * Класс, добавляющий (содержащий) списки услуг (сервисов).
  */
 public class Services {
     private List<Service> services;
@@ -28,6 +28,10 @@ public class Services {
         return services;
     }
 
+    /**
+     * Списки сервисов бассейна
+     * @return
+     */
     public List<Service> getPoolList() {
         services.add(new Service("Swimming Circle", "Плавательный Круг"));
         services.add(new Service("Trainer", "Дорожка с трененром"));
@@ -38,7 +42,10 @@ public class Services {
         return services;
     }
 
-
+    /**
+     * Списки сервисов спа
+     * @return
+     */
     public List<Service> getSPAList() {
         services.add(new Service("Massage", "Массаж"));
         services.add(new Service("Sauna", "Сауна"));
@@ -49,7 +56,10 @@ public class Services {
         return services;
     }
 
-
+    /**
+     * Списки сервисов спортзала
+     * @return
+     */
     public List<Service> getSportList() {
         services.add(new Service("Gym", "Качалка"));
         services.add(new Service("Cardio", "Беговая дорожка/Кардио"));

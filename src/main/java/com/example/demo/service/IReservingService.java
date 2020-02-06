@@ -5,6 +5,10 @@ import com.example.demo.model.api.ResultResponse;
 import com.example.demo.model.api.request.AddReservationRequest;
 import java.util.List;
 
+/**
+ * Интерфейс, определяющий функционал ReservingService:
+ * добавление, получение.
+ */
 public interface IReservingService {
     ReservationEntity add(ReservationEntity reservationEntity);
     ResultResponse addv2(AddReservationRequest addReservationRequest) throws Exception;

@@ -1,5 +1,8 @@
 package com.example.demo.model.api;
 
+/**
+ * Класс (перечисление), хранит OK и ERROR.
+ */
 public enum ResponseCode {
     OK("OK"),
     ERROR("ERROR");

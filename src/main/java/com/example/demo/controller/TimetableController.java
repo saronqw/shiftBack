@@ -31,7 +31,7 @@ public class TimetableController {
      */
     @RequestMapping(
             method = RequestMethod.POST,
-            path = "/time/add",
+            path = "api/v1/time/add",
             consumes = "application/json",
             produces = "application/json"
     )
@@ -52,13 +52,13 @@ public class TimetableController {
      * @return
      */
     @PostMapping(
-            value = "/add", consumes = "application/json", produces = "application/json")
+            value = "/api/v1/add", consumes = "application/json", produces = "application/json")
     public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
         return reservingService.add(reservationEntity);
     }
 
     @PostMapping(
-            value = "/addv2", consumes = "application/json", produces = "application/json")
+            value = "/api/v1/addv2", consumes = "application/json", produces = "application/json")
     public ResponseEntity addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
 
         if (addReservationRequest.getDateTime().getDate() == null
@@ -80,7 +80,7 @@ public class TimetableController {
      * @param service
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/services_simple/{service}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/services_simple/{service}", produces = "application/json")
     public List<ReservationEntity> get(@PathVariable(name = "service") String service) {
         return reservingService.getByService(service);
     }
@@ -92,7 +92,7 @@ public class TimetableController {
      * @param date
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/services/{service}/{date}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/services/{service}/{date}", produces = "application/json")
     public List<String> getByDateAndService(@PathVariable(name = "service") String service,
                                             @PathVariable(name = "date") Long date) {
         return reservingService.getByDayAndService(service, date);
@@ -103,7 +103,7 @@ public class TimetableController {
      * @param id
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/reserved/{id}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/reserved/{id}", produces = "application/json")
     public ReservationEntity getByID(@PathVariable(name = "id") Long id) {
         return reservingService.get(id);
     }

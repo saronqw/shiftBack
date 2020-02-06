@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ReservationEntity;
+import com.example.demo.model.api.request.AddReservationRequest;
 import com.example.demo.service.IReservingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,6 +51,14 @@ public class TimetableController {
             value = "/add", consumes = "application/json", produces = "application/json")
     public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
         return reservingService.add(reservationEntity);
+    }
+
+    @PostMapping(
+            value = "/addv2", consumes = "application/json", produces = "application/json")
+    public ResponseEntity addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
+
+        if (addReservationRequest.getDateTime().getDate() == null) throw new Exception();
+        return ResponseEntity.status(HttpStatus.OK).body(reservingService.addv2(addReservationRequest));
     }
 
     /**

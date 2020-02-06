@@ -52,10 +52,10 @@ public class Services {
 
     public List<Service> getSportList() {
         services.add(new Service("Gym", "Качалка"));
-        services.add(new Service("Cardio", "Беговая дорожка/ Кардио"));
+        services.add(new Service("Cardio", "Беговая дорожка/Кардио"));
         services.add(new Service("Bars", "Брусья"));
         services.add(new Service("Yoga", "Йога-зал"));
-        services.add(new Service("MMA", "Ринг/ MMA зал"));
+        services.add(new Service("MMA", "Ринг/MMA зал"));
 
         return services;
     }

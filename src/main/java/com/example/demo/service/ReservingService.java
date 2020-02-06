@@ -27,19 +27,16 @@ public class ReservingService implements IReservingService {
 
     @Override
     public ResultResponse addv2(AddReservationRequest addReservationRequest) {
-        //return reservationRepository.save(addReservationRequest);
         String service = addReservationRequest.getService();
         DateTimeEntity dateTimeEntity = addReservationRequest.getDateTime();
         Long studentDocument = addReservationRequest.getStudentDocument();
         ReservationEntity reservationEntity = new ReservationEntity();
-        //reservationEntity.setId(getId());
         reservationEntity.setService(service);
         reservationEntity.setDateTime(dateTimeEntity);
         reservationEntity.setStudentDocument(studentDocument);
-        ReservationEntity reservationEntity2 = add(reservationEntity);
+        reservationRepository.save(reservationEntity);
 
-
-        AddReservationResponse addReservationResponse = createAddReservationResponse(reservationEntity2);
+        AddReservationResponse addReservationResponse = createAddReservationResponse(reservationEntity);
         ResultResponse resultResponse = new ResultResponse();
         ResponseStatus status = new ResponseStatus();
         status.setCode(ResponseCode.OK.getCode());
@@ -78,6 +75,4 @@ public class ReservingService implements IReservingService {
 
         return times;
     }
-
-
 }

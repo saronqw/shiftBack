@@ -38,7 +38,6 @@ public class ReservingService implements IReservingService {
 
     /**
      * Метод, добавляющий запись и возвращающий статус операции.
-     * @param addReservationRequest
      * @return Возвращает объект класса ResultResponse
      */
     @Override
@@ -62,7 +61,6 @@ public class ReservingService implements IReservingService {
     /**
      * Метод создания объекта класса AddReservationResponse,
      * используемый в {@link #add_v2(AddReservationRequest)}
-     * @param reservationEntity
      * @return Возвращает объект класса AddReservationResponse.
      */
     private AddReservationResponse createAddReservationResponse(ReservationEntity reservationEntity) {
@@ -85,9 +83,10 @@ public class ReservingService implements IReservingService {
 
     /**
      * Метод для получения списка времен для сервиса в определенную дату.
-     * @param service
-     * @param date
+     * @param service Сервис, для которого необходимо получить список времен.
+     * @param date Дата, для которой необходимо получчить список времен.
      * @return Возвращает список времен.
+     * @deprecated V1 - Не предусмотрена проверка исключений.
      */
     @Override
     public List<String> getByDayAndService(String service, Long date) {
@@ -102,6 +101,13 @@ public class ReservingService implements IReservingService {
         return times;
     }
 
+    /**
+     * Метод для получения списка времен для сервиса в определенную дату.
+     * (предусмотрена проверка исключений)
+     * @param service Сервис, для которого необходимо получить список времен.
+     * @param date Дата, для которой необходимо получчить список времен.
+     * @return Возвращает список времен.
+     */
     @Override
     public ResultResponse getByDayAndService_v2(String service, Long date) {
         List<String> times = new ArrayList<>();

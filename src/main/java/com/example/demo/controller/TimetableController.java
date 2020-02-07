@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Класс-контроллер, отвечающий за бронирование сервисов.
+ * @version 2.0 - Добавлены новые обработчики ошибок, коды которых отправляются одновременно с записью.
  */
 @RestController
 public class TimetableController {
@@ -32,6 +33,7 @@ public class TimetableController {
      * Добавляет запись на сервис (не используется?)
      * @param reservationEntity Запись (сущность).
      * @return Добавляет запись на сервис в виде json объекта.
+     * @deprecated V1 не имеет новых обработчиков ошибок и не возвращает код с сообщением ошибки.
      */
     @PostMapping(
             value = "/v1/add", consumes = "application/json", produces = "application/json")
@@ -60,7 +62,7 @@ public class TimetableController {
      * Метод добавления записи на сервис.
      * @param addReservationRequest Добавляет
      * @return Добавляет запись на сервис в виде json объекта.
-     * @throws Exception При отсутствии одного из параметров записи или при повторении записи отображается исключение.
+     * @throws Exception Отображается исключение при: отсутствии одного из параметров записи, при повторении записи, при занятости записи.
      */
     @PostMapping(
             value = "/v2/add", consumes = "application/json", produces = "application/json")
@@ -98,11 +100,11 @@ public class TimetableController {
     }
 
     /**
-     * Дико важная функция по заказу фронтенда.
      * Выводит список часов конкретной секции в определённый день.
      * @param service Сервис записей.
      * @param date Дата, в которой необходимо просмотреть время.
      * @return Возвращает список доступных часов.
+     * @deprecated V1 не возвращает код и сообщение ошибки.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/v1/services/{service}/{date}", produces = "application/json")
     public List<String> getByDateAndService(@PathVariable(name = "service") String service,
@@ -110,6 +112,12 @@ public class TimetableController {
         return reservingService.getByDayAndService(service, date);
     }
 
+    /**
+     * Выводит список часов конкретной секции в определённый день.
+     * @param service Сервис записей.
+     * @param date Дата, в которой необходимо просмотреть время.
+     * @return Возвращает список доступных часов.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/v2/services_v2/{service}/{date}", produces = "application/json")
     public ResponseEntity<?> getByDateAndService_v2(@PathVariable(name = "service") String service,
                                             @PathVariable(name = "date") Long date) {

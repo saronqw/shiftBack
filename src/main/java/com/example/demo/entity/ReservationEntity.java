@@ -6,9 +6,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Сущность, содержащая информацию о брони.
- * service - название сервиса
- * dateTime - объект времени
- * studentDocument - номер студака
+ * service - название сервиса;
+ * dateTime - объект времени;
+ * studentDocument - номер студака.
  */
 @Entity
 @Table(name = "reserv")
@@ -30,6 +30,9 @@ public class ReservationEntity {
     @Column(name = "service")
     private String service;
 
+    /**
+     * Связь один к одному с сущностью, содержащей дату и время.
+     */
     @OneToOne(cascade = CascadeType.ALL)
     private DateTimeEntity dateTime;
 

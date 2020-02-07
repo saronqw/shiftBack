@@ -18,6 +18,8 @@ import java.util.Map;
 /**
  * Класс-контроллер, методы которого возвращают список
  *  сервисов у категории.
+ *  @version 2.0 - В файле JSON помимо списка сервисов также содержите статус отправления и код ошибки.
+ *  @version 1.0 - В файле JSON содержится только список
  */
 @RestController
 public class ListController {
@@ -25,7 +27,9 @@ public class ListController {
     @Autowired
     private IListSectionService iListSectionService;
 
+
     /**
+     * @deprecated Метод GET запоса для спортзала (V1)
      * Метод GET запроса для спортзала.
      * @return Возвращает список сервисов спортзала.
      */
@@ -34,12 +38,17 @@ public class ListController {
         return new Services().getSportList();
     }
 
+    /**
+     * Метод GET запроса для спортзала. (V2)
+     * @return Возвращает список сервисов спортзала.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/v2/gym", produces = "application/json")
     public ResponseEntity<?> getSportList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getSportList()));
     }
 
     /**
+     * @deprecated Метод GET запоса для спа (V1)
      * Метод GET запроса для спа.
      * @return Возвращает список сервисов спа.
      */
@@ -48,13 +57,18 @@ public class ListController {
         return new Services().getSPAList();
     }
 
+    /**
+     * Метод GET запроса для спа. (V2)
+     * @return Возвращает список сервисов спа.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/v2/spa", produces = "application/json")
     public ResponseEntity<?> getSPAList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getSPAList()));
     }
 
     /**
-     * Метод GET запроса для бассейне.
+     * @deprecated Метод GET запоса для бассейна (V1)
+     * Метод GET запроса для бассейна.
      * @return Возвращает список сервисов бассейна.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/v1/pool", produces = "application/json")
@@ -62,12 +76,18 @@ public class ListController {
         return new Services().getPoolList();
     }
 
+    /**
+     * Метод GET запроса для бассейна. (V2)
+     * @return Возвращает список сервисов бассейна.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/v2/pool", produces = "application/json")
     public ResponseEntity<?> getPoolList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getPoolList()));
     }
 
+
     /**
+     * @deprecated Метод GET запоса для бара (V1)
      * Метод GET запроса для бара.
      * @return Возвращает список сервисов бара.
      */
@@ -76,6 +96,10 @@ public class ListController {
         return new Services().getBarList();
     }
 
+    /**
+     * Метод GET запроса для бара. (V2)
+     * @return Возвращает список сервисов бара.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/v2/bar", produces = "application/json")
     public ResponseEntity<?> getBarList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getBarList()));

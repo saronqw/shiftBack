@@ -33,6 +33,22 @@ public class TimetableController {
     @PostMapping(
             value = "/v1/add", consumes = "application/json", produces = "application/json")
     public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
+        if (reservationEntity.getDateTime().getDate() == null
+                || reservationEntity.getDateTime().getTime() == null
+                || reservationEntity.getStudentDocument() == null
+                || reservationEntity.getService() == null)
+            throw new NullFieldsException(reservationEntity);
+
+        Boolean isExisted = iReservationRepository.existsByDateTime_DateAndDateTime_TimeAndService(reservationEntity.getDateTime().getDate(),
+                reservationEntity.getDateTime().getTime(), reservationEntity.getService());
+
+//        if (isExisted) throw new RecordExistException(reservationEntity);
+
+        Boolean isOccupied = iReservationRepository.existsByStudentDocumentAndDateTime_DateAndDateTime_Time(reservationEntity.getStudentDocument(),
+                reservationEntity.getDateTime().getDate(), reservationEntity.getDateTime().getTime());
+
+//        if (isOccupied) throw new RecordExistException(reservationEntity);
+
         return reservingService.add(reservationEntity);
     }
 
@@ -56,6 +72,11 @@ public class TimetableController {
                 addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());
 
         if (isExisted) throw new RecordExistException(addReservationRequest);
+
+        Boolean isOccupied = iReservationRepository.existsByStudentDocumentAndDateTime_DateAndDateTime_Time(addReservationRequest.getStudentDocument(),
+                addReservationRequest.getDateTime().getDate(), addReservationRequest.getDateTime().getTime());
+
+        if (isOccupied) throw new RecordExistException(addReservationRequest);
 
         return ResponseEntity.status(HttpStatus.OK).body(reservingService.add_v2(addReservationRequest));
     }

@@ -32,4 +32,7 @@ public interface IReservationRepository extends CrudRepository<ReservationEntity
       */
      Boolean existsByDateTime_DateAndDateTime_TimeAndService(Long date, String time,
                                                                           String service);
+
+     Boolean existsByStudentDocumentAndDateTime_DateAndDateTime_Time(Long studentDocument,
+                                                                     Long date, String time);
 }

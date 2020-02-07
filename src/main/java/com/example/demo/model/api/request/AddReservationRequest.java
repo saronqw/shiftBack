@@ -8,9 +8,7 @@ import com.example.demo.entity.DateTimeEntity;
 public class AddReservationRequest {
 
     private String service;
-
     private DateTimeEntity dateTime;
-
     private Long studentDocument;
 
     public String getService() {

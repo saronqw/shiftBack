@@ -29,12 +29,12 @@ public class ListController {
      * Метод GET запроса для спортзала.
      * @return Возвращает список сервисов спортзала.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/gym", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/gym", produces = "application/json")
     public List<Service> getSportList() {
         return new Services().getSportList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/gym_v2", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v2/gym", produces = "application/json")
     public ResponseEntity<?> getSportList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getSportList()));
     }
@@ -43,12 +43,12 @@ public class ListController {
      * Метод GET запроса для спа.
      * @return Возвращает список сервисов спа.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/spa", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/spa", produces = "application/json")
     public List<Service> getSPAList() {
         return new Services().getSPAList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/spa_v2", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v2/spa", produces = "application/json")
     public ResponseEntity<?> getSPAList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getSPAList()));
     }
@@ -57,12 +57,12 @@ public class ListController {
      * Метод GET запроса для бассейне.
      * @return Возвращает список сервисов бассейна.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/pool", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/pool", produces = "application/json")
     public List<Service> getPoolList() {
         return new Services().getPoolList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/pool_v2", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v2/pool", produces = "application/json")
     public ResponseEntity<?> getPoolList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getPoolList()));
     }
@@ -71,12 +71,12 @@ public class ListController {
      * Метод GET запроса для бара.
      * @return Возвращает список сервисов бара.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/bar", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/bar", produces = "application/json")
     public List<Service> getBarList() {
         return new Services().getBarList();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/bar_v2", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v2/bar", produces = "application/json")
     public ResponseEntity<?> getBarList_v2() {
         return ResponseEntity.status(HttpStatus.OK).body(iListSectionService.getServices(new Services().getBarList()));
     }

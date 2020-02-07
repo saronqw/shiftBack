@@ -31,7 +31,7 @@ public class TimetableController {
      * @return Добавляет запись на сервис в виде json объекта.
      */
     @PostMapping(
-            value = "add", consumes = "application/json", produces = "application/json")
+            value = "/v1/add", consumes = "application/json", produces = "application/json")
     public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
         return reservingService.add(reservationEntity);
     }
@@ -43,7 +43,7 @@ public class TimetableController {
      * @throws Exception При отсутствии одного из параметров записи или при повторении записи отображается исключение.
      */
     @PostMapping(
-            value = "add_v2", consumes = "application/json", produces = "application/json")
+            value = "/v2/add", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> addReservationV2(@RequestBody AddReservationRequest addReservationRequest) throws Exception {
 
         if (addReservationRequest.getDateTime().getDate() == null
@@ -65,7 +65,7 @@ public class TimetableController {
      * @param service Сервис записи.
      * @return Возвращает список сущностей сервиса.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "services_simple/{service}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/services_simple/{service}", produces = "application/json")
     public List<ReservationEntity> get(@PathVariable(name = "service") String service) {
         return reservingService.getByService(service);
     }
@@ -77,13 +77,13 @@ public class TimetableController {
      * @param date Дата, в которой необходимо просмотреть время.
      * @return Возвращает список доступных часов.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/services/{service}/{date}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/services/{service}/{date}", produces = "application/json")
     public List<String> getByDateAndService(@PathVariable(name = "service") String service,
                                             @PathVariable(name = "date") Long date) {
         return reservingService.getByDayAndService(service, date);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/services_v2/{service}/{date}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v2/services_v2/{service}/{date}", produces = "application/json")
     public ResponseEntity<?> getByDateAndService_v2(@PathVariable(name = "service") String service,
                                             @PathVariable(name = "date") Long date) {
         return ResponseEntity.status(HttpStatus.OK).body(reservingService.getByDayAndService_v2(service, date));
@@ -94,7 +94,7 @@ public class TimetableController {
      * @param id Идентификатор записи.
      * @return Возвращает запись.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/reserved/{id}", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/reserved/{id}", produces = "application/json")
     public ReservationEntity getByID(@PathVariable(name = "id") Long id) {
         return reservingService.get(id);
     }

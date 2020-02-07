@@ -18,12 +18,12 @@ public class Services {
      * @return Возвращает список сервисов бара.
      */
     public List<Service> getBarList() {
-        services.add(new Service("Hookah", "Кальян"));
-        services.add(new Service("PS/XBox", "PS/XBOX"));
-        services.add(new Service("Billiards", "Билльярд"));
-        services.add(new Service("Bowling", "Боулинг"));
-        services.add(new Service("Darts", "Дартц"));
-        services.add(new Service("Karaoke", "Караоке"));
+        services.add(new Service("hookah", "Кальян"));
+        services.add(new Service("ps_xbox", "PS/XBOX"));
+        services.add(new Service("billiards", "Билльярд"));
+        services.add(new Service("bowling", "Боулинг"));
+        services.add(new Service("darts", "Дартц"));
+        services.add(new Service("karaoke", "Караоке"));
 
         return services;
     }
@@ -33,11 +33,11 @@ public class Services {
      * @return Возвращает список сервисов бассейна.
      */
     public List<Service> getPoolList() {
-        services.add(new Service("Swimming Circle", "Плавательный Круг"));
-        services.add(new Service("Trainer", "Дорожка с трененром"));
-        services.add(new Service("Sheislong", "Шезлонг"));
-        services.add(new Service("Children Track", "Детская дорожка"));
-        services.add(new Service("Adult Track", "Взрослая дорожка"));
+        services.add(new Service("swimming_circle", "Плавательный Круг"));
+        services.add(new Service("trainer", "Дорожка с трененром"));
+        services.add(new Service("sheislong", "Шезлонг"));
+        services.add(new Service("children_track", "Детская дорожка"));
+        services.add(new Service("adult_track", "Взрослая дорожка"));
 
         return services;
     }
@@ -47,11 +47,11 @@ public class Services {
      * @return Возвращает список сервисов спа.
      */
     public List<Service> getSPAList() {
-        services.add(new Service("Massage", "Массаж"));
-        services.add(new Service("Sauna", "Сауна"));
-        services.add(new Service("Acupuncture", "Иглоукалывание"));
-        services.add(new Service("Manicure", "Маникюр"));
-        services.add(new Service("Pedicure", "Педикюр"));
+        services.add(new Service("massage", "Массаж"));
+        services.add(new Service("sauna", "Сауна"));
+        services.add(new Service("acupuncture", "Иглоукалывание"));
+        services.add(new Service("manicure", "Маникюр"));
+        services.add(new Service("pedicure", "Педикюр"));
 
         return services;
     }
@@ -61,11 +61,11 @@ public class Services {
      * @return Возвращает список сервисов спортзала.
      */
     public List<Service> getSportList() {
-        services.add(new Service("Gym", "Качалка"));
-        services.add(new Service("Cardio", "Беговая дорожка/Кардио"));
-        services.add(new Service("Bars", "Брусья"));
-        services.add(new Service("Yoga", "Йога-зал"));
-        services.add(new Service("MMA", "Ринг/MMA зал"));
+        services.add(new Service("gym", "Качалка"));
+        services.add(new Service("cardio", "Беговая дорожка/Кардио"));
+        services.add(new Service("ars", "Брусья"));
+        services.add(new Service("yoga", "Йога-зал"));
+        services.add(new Service("mma", "Ринг/MMA зал"));
 
         return services;
     }

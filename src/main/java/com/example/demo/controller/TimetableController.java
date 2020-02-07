@@ -6,6 +6,8 @@ import com.example.demo.exception.RecordExistException;
 import com.example.demo.model.api.request.AddReservationRequest;
 import com.example.demo.repository.IReservationRepository;
 import com.example.demo.service.IReservingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import java.util.List;
  */
 @RestController
 public class TimetableController {
+    Logger logger = LoggerFactory.getLogger(TimetableController.class);
 
     @Autowired
     private IReservingService reservingService;
@@ -32,7 +35,7 @@ public class TimetableController {
      */
     @PostMapping(
             value = "/v1/add", consumes = "application/json", produces = "application/json")
-    public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) {
+    public ReservationEntity addReservation(@RequestBody ReservationEntity reservationEntity) throws Exception {
         if (reservationEntity.getDateTime().getDate() == null
                 || reservationEntity.getDateTime().getTime() == null
                 || reservationEntity.getStudentDocument() == null
@@ -44,9 +47,10 @@ public class TimetableController {
 
         if (isExisted) throw new RecordExistException(reservationEntity);
 
+        if (!reservingService.isOK(reservationEntity.getStudentDocument())) throw new Exception();
+
         Boolean isOccupied = iReservationRepository.existsByStudentDocumentAndDateTime_DateAndDateTime_Time(reservationEntity.getStudentDocument(),
                 reservationEntity.getDateTime().getDate(), reservationEntity.getDateTime().getTime());
-
         if (isOccupied) throw new RecordExistException(reservationEntity);
 
         return reservingService.add(reservationEntity);
@@ -72,6 +76,8 @@ public class TimetableController {
                 addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());
 
         if (isExisted) throw new RecordExistException(addReservationRequest);
+
+        if (!reservingService.isOK(addReservationRequest.getStudentDocument())) throw new Exception();
 
         Boolean isOccupied = iReservationRepository.existsByStudentDocumentAndDateTime_DateAndDateTime_Time(addReservationRequest.getStudentDocument(),
                 addReservationRequest.getDateTime().getDate(), addReservationRequest.getDateTime().getTime());

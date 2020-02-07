@@ -1,12 +1,12 @@
 package com.example.demo.exception;
 
-import com.example.demo.model.api.request.AddReservationRequest;
 
 public class RecordExistException extends RuntimeException {
 
-    private AddReservationRequest addReservationRequest = new AddReservationRequest();
+    //private AddReservationRequest addReservationRequest = new AddReservationRequest();
+    private Object object;
 
-    public RecordExistException(AddReservationRequest addReservationRequest) {
+    /*public RecordExistException(AddReservationRequest addReservationRequest) {
         this.addReservationRequest.setService(addReservationRequest.getService());
         this.addReservationRequest.setDateTime(addReservationRequest.getDateTime());
         this.addReservationRequest.setStudentDocument(addReservationRequest.getStudentDocument());
@@ -14,5 +14,13 @@ public class RecordExistException extends RuntimeException {
 
     public AddReservationRequest getAddReservationRequest() {
         return addReservationRequest;
+    }*/
+
+    public RecordExistException(Object object) {
+        this.object = object;
+    }
+
+    public Object getObject() {
+        return object;
     }
 }

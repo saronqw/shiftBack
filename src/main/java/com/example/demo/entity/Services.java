@@ -22,7 +22,7 @@ public class Services {
         services.add(new Service("ps_xbox", "PS/XBOX"));
         services.add(new Service("billiards", "Билльярд"));
         services.add(new Service("bowling", "Боулинг"));
-        services.add(new Service("darts", "Дартц"));
+        services.add(new Service("darts", "Дартс"));
         services.add(new Service("karaoke", "Караоке"));
 
         return services;

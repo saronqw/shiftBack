@@ -42,12 +42,12 @@ public class TimetableController {
         Boolean isExisted = iReservationRepository.existsByDateTime_DateAndDateTime_TimeAndService(reservationEntity.getDateTime().getDate(),
                 reservationEntity.getDateTime().getTime(), reservationEntity.getService());
 
-//        if (isExisted) throw new RecordExistException(reservationEntity);
+        if (isExisted) throw new RecordExistException(reservationEntity);
 
         Boolean isOccupied = iReservationRepository.existsByStudentDocumentAndDateTime_DateAndDateTime_Time(reservationEntity.getStudentDocument(),
                 reservationEntity.getDateTime().getDate(), reservationEntity.getDateTime().getTime());
 
-//        if (isOccupied) throw new RecordExistException(reservationEntity);
+        if (isOccupied) throw new RecordExistException(reservationEntity);
 
         return reservingService.add(reservationEntity);
     }

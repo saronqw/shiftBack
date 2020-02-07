@@ -37,7 +37,7 @@ public class ErrorController {
         responseStatus.setCode(ResponseCode.ERROR.getCode());
         responseStatus.setErrorMessage("Данное время уже занято");
         resultResponse.setStatus(responseStatus);
-        resultResponse.setData(e.getAddReservationRequest());
+        resultResponse.setData(e.getObject());
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
 

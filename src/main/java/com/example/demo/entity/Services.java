@@ -20,7 +20,7 @@ public class Services {
     public List<Service> getBarList() {
         services.add(new Service("hookah", "Кальян"));
         services.add(new Service("ps_xbox", "PS/XBOX"));
-        services.add(new Service("billiards", "Билльярд"));
+        services.add(new Service("billiards", "Бильярд"));
         services.add(new Service("bowling", "Боулинг"));
         services.add(new Service("darts", "Дартс"));
         services.add(new Service("karaoke", "Караоке"));

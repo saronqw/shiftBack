@@ -72,6 +72,7 @@ public class TimetableController {
                 addReservationRequest.getDateTime().getTime(), addReservationRequest.getService());
 
         if (isExisted) throw new RecordExistException(addReservationRequest);
+        if (addReservationRequest.getStudentDocument().toString().length() != 10) throw new RecordExistException(addReservationRequest);
 
         Boolean isOccupied = iReservationRepository.existsByStudentDocumentAndDateTime_DateAndDateTime_Time(addReservationRequest.getStudentDocument(),
                 addReservationRequest.getDateTime().getDate(), addReservationRequest.getDateTime().getTime());

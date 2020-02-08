@@ -16,4 +16,6 @@ public interface IReservingService {
     List<ReservationEntity> getByService(String service);
     List<String> getByDayAndService(String service, Long time);
     ResultResponse getByDayAndService_v2(java.lang.String service, Long date);
+    List<Long> getStudentDocuments();
+    Boolean isOK(Long studentDocument);
 }

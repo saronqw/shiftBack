@@ -1,6 +1,10 @@
 package com.example.demo.exception;
 
 
+/**
+ * Класс обработчик исключений, возникающих в случае
+ * попытки сделать запись на занятое время.
+ */
 public class RecordExistException extends RuntimeException {
     private Object object;
 

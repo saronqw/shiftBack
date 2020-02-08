@@ -33,6 +33,13 @@ public interface IReservationRepository extends CrudRepository<ReservationEntity
      Boolean existsByDateTime_DateAndDateTime_TimeAndService(Long date, String time,
                                                                           String service);
 
+     /**
+      * Метод, проверяющий наличие записи по студ. билету на заданное время и дату.
+      * @param studentDocument Проверяемый номер студ. билета.
+      * @param date Дата, по которой должна быть проверена запись.
+      * @param time Время, по которому должна быть проверена запись.
+      * @return Возвращает Boolean - true, если запись существует и false соотв.
+      */
      Boolean existsByStudentDocumentAndDateTime_DateAndDateTime_Time(Long studentDocument,
                                                                      Long date, String time);
 }

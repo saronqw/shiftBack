@@ -30,6 +30,12 @@ public class ErrorController {
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
 
+    /**
+     * Метод обработки ошибки, работающий при попытке
+     * добавления записи на занятое время.
+     * @param e Параметр исключения.
+     * @return Возвращает сообщение об ошибке.
+     */
     @ExceptionHandler(value = RecordExistException.class)
     public ResponseEntity<Object> handleException(RecordExistException e) {
         ResultResponse resultResponse = new ResultResponse();
@@ -41,6 +47,11 @@ public class ErrorController {
         return ResponseEntity.status(HttpStatus.OK).body(resultResponse);
     }
 
+    /**
+     * Метод обработки ошибки, работающий при наличии пустых полей.
+     * @param e Параметр исключения.
+     * @return Возвращает сообщение об ошибке.
+     */
     @ExceptionHandler(value = NullFieldsException.class)
     public ResponseEntity<Object> handleException(NullFieldsException e) {
         ResultResponse resultResponse = new ResultResponse();

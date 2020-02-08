@@ -6,6 +6,9 @@ import com.example.demo.model.api.ResponseStatus;
 import com.example.demo.model.api.ResultResponse;
 import java.util.List;
 
+/**
+ * Класс-сервис, необходимый для получения списка сервисов.
+ */
 @org.springframework.stereotype.Service
 public class ListSectionService implements IListSectionService {
 
